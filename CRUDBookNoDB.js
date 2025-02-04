@@ -41,7 +41,7 @@ app.get('/books/:id', (req, res) => {
 });
 
 // route to create a new book
-app.post('/book', (req, res) => {
+app.post('/books', (req, res) => {
     const book = {
         id: books.length + 1,
         title: req.body.title,
@@ -52,7 +52,7 @@ app.post('/book', (req, res) => {
 });
 
 // route to update a new book
-app.put('/book/:id', (req, res) => {
+app.put('/books/:id', (req, res) => {
     const book = books.find(b => b.id === parseInt(req.params.i));
     if (!book) res.status(404).swnd('Book not found');
     book.title = req.body.title;
@@ -61,7 +61,7 @@ app.put('/book/:id', (req, res) => {
 });
 
 // route to delete a book
-app.delete('/book/:id', (req, res) => {
+app.delete('/books/:id', (req, res) => {
     const book = books.find(b => b.id === parseInt(req.params.i));
     if (!book) res.status(404).swnd('Book not found');
     const index = books.indexOf(book);
