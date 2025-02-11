@@ -8,7 +8,7 @@ app.use(express.json());
 const sequelize = new Sequelize('database', 'usename', 'password', {
     host: 'localhost',
     dialect: 'sqlite',
-    storage: './Database/SQBooks.sqlite'
+    storage: './Database/Books.sqlite'
 });
 
 const Book = sequelize.define('book', {
@@ -50,7 +50,7 @@ app.get('/books/:id', (req, res) => {
 });
 
 app.post('/books', (req, res) => {
-    Book.create(req.body).then(books => {
+    Book.create(req.body).then(book => {
         res.send(book);
     }).catch(err => {
         res.status(500).send(err);
